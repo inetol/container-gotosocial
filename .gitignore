@@ -1,0 +1,5 @@
+*
+!.gitignore
+!.gotosocial.env.example
+!docker-compose.yml
+!LICENSE

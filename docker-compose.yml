@@ -1,0 +1,26 @@
+services:
+  gotosocial:
+    image: docker.io/superseriousbusiness/gotosocial:0.13.0
+    container_name: gotosocial
+    user: 0:0
+    ports:
+      - "127.0.0.1:61030:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+    env_file:
+      - ./.gotosocial.env
+    volumes:
+      - ~/portal/gotosocial-storage:/gotosocial/storage
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
+      - DAC_OVERRIDE
+    logging:
+      driver: journald
